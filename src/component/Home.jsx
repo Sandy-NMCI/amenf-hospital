@@ -20,6 +20,7 @@ import { Badge } from "../component/ui/badge";
 import { Carousel } from "flowbite-react";
 import { Icon } from "lucide-react";
 import { coconut } from "@lucide/lab";
+import doc4 from "../assets/doctor4.jpg";
 const handleInputChange = (e) => {
   const { name, value } = e.target;
   setFormData((prev) => ({
@@ -78,6 +79,9 @@ import {
   // GraduationCap,
 } from "lucide-react";
 const Home = () => {
+  useEffect(() => {
+    document.title = "AMENF : African Medical Education Network Foundation ";
+  }, []);
   const [openIndex, setOpenIndex] = useState(0);
   const { services } = mockData;
 
@@ -202,7 +206,7 @@ const Home = () => {
                 Todays Tip from Dr. Sakshi
               </h1>
               <img
-                src="doctor4.jpg"
+                src={doc4}
                 alt="Error loading"
                 className="rounded-md w-full object-cover md:h-full"
               />

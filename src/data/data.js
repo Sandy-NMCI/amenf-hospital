@@ -292,7 +292,7 @@ export const doctors = [
     name: "Dr. Anandi Gopal",
     specialty: "Neurologist",
     experience: "10+ years",
-    image: `./n-doctor.jpg`,
+    image: "/n-doctor.jpg",
     rating: 4.9,
     qualifications: "MD, PhD, Board Certified",
     email: "anandi@amenf.com",
