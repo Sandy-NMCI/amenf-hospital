@@ -36,7 +36,7 @@ const Banner = () => {
               <img
                 src={data.img}
                 alt=""
-                className="rounded-t-md w-full h-[450px]"
+                className="w-full  h-auto lg:h-[550px]"
               />
             </div>
           </SwiperSlide>

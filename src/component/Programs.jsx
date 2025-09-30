@@ -23,11 +23,26 @@ import {
   TrendingUp,
   CheckCircle,
 } from "lucide-react";
-import { mockData } from "../data/data";
+import { mockData, programsData, requirements } from "../data/data";
+import { useNavigate } from "react-router-dom";
+import { Carousel } from "flowbite-react";
 
 const Programs = () => {
-  const { programs, foundation } = mockData;
+  const navigate = useNavigate();
 
+  const goToProgramDetailsPage = () => {
+    navigate("/ProgramDetails"); // Navigate to the '/about' route
+  };
+  // const getIcon = (iconName) => {
+  //   const icons = {
+  //     GraduationCap,
+  //     Heart,
+  //     Users,
+  //     Globe,
+  //   };
+  //   return icons[iconName] || GraduationCap;
+  // };
+  const { programs, foundation } = mockData;
   const programHighlights = [
     {
       icon: GraduationCap,
@@ -59,18 +74,9 @@ const Programs = () => {
     },
   ];
 
-  const requirements = [
-    "Be a citizen of a sub-Saharan African country",
-    "Demonstrate academic excellence and leadership potential",
-    "Commit to serving underserved communities for 2 years post-graduation",
-    "Pass comprehensive entrance examinations",
-    "Provide proof of English proficiency",
-    "Submit letters of recommendation",
-  ];
-
   return (
-    <div className="min-h-screen py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen  bg-gradient-to-br from-slate-50 to-blue-50">
+      <div className="pt-10 bg-[url('./img2.jpg')] bg-cover bg-center h-100">
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-100 text-lg px-4 py-2">
@@ -88,7 +94,8 @@ const Programs = () => {
             build the next generation of healthcare professionals for Africa.
           </p>
         </div>
-
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Program Highlights */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {programHighlights.map((highlight, index) => (
@@ -109,6 +116,14 @@ const Programs = () => {
                   {highlight.title}
                 </h3>
                 <p className="text-sm text-gray-600">{highlight.description}</p>
+                <Button
+                  onClick={goToProgramDetailsPage}
+                  type="submit"
+                  size="lg"
+                  className="w-full bg-gradient-to-r from-teal-100 to-cyan-200 hover:from-teal-200 hover:to-cyan-300 shadow-lg"
+                >
+                  Read More
+                </Button>
               </CardContent>
             </Card>
           ))}
@@ -118,10 +133,30 @@ const Programs = () => {
         <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 mb-16">
           <Tabs defaultValue="overview" className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8">
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="medical">Medical Program</TabsTrigger>
-              <TabsTrigger value="allied">Allied Health</TabsTrigger>
-              <TabsTrigger value="requirements">Requirements</TabsTrigger>
+              <TabsTrigger
+                value="overview"
+                className="bg-red-100 p-4 hover:bg-red-300 hover:cursor-pointer"
+              >
+                Overview
+              </TabsTrigger>
+              <TabsTrigger
+                value="medical"
+                className="bg-green-100 p-4 hover:bg-green-300 hover:cursor-pointer"
+              >
+                Medical Program
+              </TabsTrigger>
+              <TabsTrigger
+                value="allied"
+                className="bg-blue-100 p-4 hover:bg-blue-300 hover:cursor-pointer"
+              >
+                Allied Health
+              </TabsTrigger>
+              <TabsTrigger
+                value="requirements"
+                className="bg-yellow-100 p-4 hover:bg-yellow-300 hover:cursor-pointer"
+              >
+                Requirements
+              </TabsTrigger>
             </TabsList>
 
             <TabsContent value="overview" className="space-y-8">

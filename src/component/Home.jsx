@@ -1,16 +1,52 @@
 import React from "react";
 import Banner from "./Banner";
+import DynamicIcon from "./ui/DynamicIcon";
 import { IoClose, IoMenu } from "react-icons/io5";
 import { ImAidKit } from "react-icons/im";
-import { FaUserDoctor } from "react-icons/fa6";
-import { FaAmbulance } from "react-icons/fa";
-import { FaArrowAltCircleRight } from "react-icons/fa";
-import { useState } from "react";
-import { FaRegHospital } from "react-icons/fa";
+import { FaUserDoctor, FaViacoin } from "react-icons/fa6";
+import {
+  FaAmbulance,
+  FaArrowAltCircleRight,
+  FaRegHospital,
+  FaMinus,
+  FaPlus,
+  FaRegHeart,
+} from "react-icons/fa";
+import * as FontAwesome from "react-icons/fa";
+import { GraduationCap, icons } from "lucide-react";
+import { useState, useEffect } from "react";
 import { LuBriefcaseMedical } from "react-icons/lu";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
-import { clinicsDetails, partnersDetails, mockData } from "../data/data";
+import { Badge } from "../component/ui/badge";
+import { Carousel } from "flowbite-react";
+import { Icon } from "lucide-react";
+import { coconut } from "@lucide/lab";
+const handleInputChange = (e) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({
+    ...prev,
+    [name]: value,
+  }));
+};
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+  console.log("Form submitted:", formData);
+  // Reset form
+  setFormData({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+};
+import {
+  clinicsDetails,
+  partnersDetails,
+  mockData,
+  doctors,
+  faqs,
+  features,
+} from "../data/data";
 import {
   Card,
   CardContent,
@@ -18,47 +54,56 @@ import {
   CardHeader,
   CardTitle,
 } from "../component/ui/card";
+import {
+  Ambulance,
+  Hospital,
+  BriefcaseMedical,
+  Accessibility,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Heart,
+  Users,
+  Award,
+  HeartPlus,
+  Stethoscope,
+  Calendar,
+  Star,
+  ChevronRight,
+  Menu,
+  X,
+  Monitor,
+  FlaskConical,
+  // GraduationCap,
+} from "lucide-react";
 const Home = () => {
   const [openIndex, setOpenIndex] = useState(0);
   const { services } = mockData;
-  const faqs = [
-    {
-      question: "What is the difference between lease and licence agreement?",
-      answer:
-        "Consectetur adipiscing elit. Cras vehicula dictum metus at interdum. Vivamus ut euismod metus. Integer a est suscipit est ultricies viverra. Mauris rhoncus nunc ut porttitor dictum. In placerat mi a fermentum consequat. Mauris neque diam, vulputate vel felis eget, faucibus consequat mi.",
-    },
-    {
-      question: "How ownership of property is acquired by a person?",
-      answer: "Answer text for property ownership...",
-    },
-    {
-      question: "Can a registered will be rectified or changed?",
-      answer: "Answer text for rectification of will...",
-    },
-    {
-      question:
-        "Is the certified copy of a registered will available to anybody?",
-      answer: "Answer text for certified copy availability...",
-    },
-  ];
 
-  const whyUs = [
-    {
-      icon: <FaRegHospital className="w-8 h-8 text-white" />,
-      title: "Great Infrastructure",
-      desc: "Nunc at pretium est curabitur commodo leac est venenatis egestas sed aliquet auguevelit.",
-    },
-    {
-      icon: <FaAmbulance className="w-8 h-8 text-white" />,
-      title: "24/7 Ambulance Services",
-      desc: "Nunc at pretium est curabitur commodo leac est venenatis egestas sed aliquet auguevelit.",
-    },
-    {
-      icon: <LuBriefcaseMedical className="w-8 h-8 text-white" />,
-      title: "Cutting Edge Technology",
-      desc: "Nunc at pretium est curabitur commodo leac est venenatis egestas sed aliquet auguevelit.",
-    },
-  ];
+  const currentIcon = "Award";
+  const currentIconFamily = "lucide-react";
+  const getIcon = (iconName) => {
+    const icons = {
+      HeartPlus,
+      GraduationCap,
+      Award,
+      Stethoscope,
+      Monitor,
+      Users,
+      FlaskConical,
+      Ambulance,
+      Hospital,
+      BriefcaseMedical,
+      Accessibility,
+      FaRegHospital,
+    };
+    return icons[iconName] || HeartPlus;
+  };
+
+  const handleButtonClick = () => {
+    window.location.href = "/Doctors"; // Direct browser redirection
+  };
 
   return (
     <>
@@ -67,13 +112,13 @@ const Home = () => {
       <div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-6 md:mx-32 my-10 items-stretch">
           {/* Card 1 */}
-          <div className="p-8 border border-gray-200 bg-gray-200 shadow-xl rounded-tl-4xl rounded-br-4xl hover:bg-gray-300 cursor-pointer flex flex-col h-full">
+          <div className="p-8 border border-gray-200 bg-purple-50 shadow-xl rounded-tl-4xl rounded-br-4xl hover:bg-purple-100 cursor-pointer flex flex-col h-full">
             <div className="flex-1 text-center">
-              <ImAidKit className="w-10 h-10 inline-block text-teal-500" />
-              <h5 className="mt-4 text-xl font-bold text-gray-800">
+              <ImAidKit className="w-10 h-10 inline-block text-purple-500" />
+              <h5 className="mt-4 text-xl font-bold text-purple-700">
                 Advanced Technology
               </h5>
-              <p className="mt-2 text-sm text-gray-700">
+              <p className="mt-2 text-sm text-purple-900">
                 AMENF leverages advanced technology to revolutionize medical
                 education and training, ensuring accessible, high-quality
                 healthcare capacity across sub-Saharan Africa.
@@ -82,13 +127,13 @@ const Home = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="p-8 border border-gray-200 bg-gray-200 shadow-xl rounded-tl-4xl rounded-br-4xl hover:bg-gray-300 cursor-pointer flex flex-col h-full">
+          <div className="p-8 border border-gray-200 bg-green-50 shadow-xl rounded-tl-4xl rounded-br-4xl hover:bg-green-100 cursor-pointer flex flex-col h-full">
             <div className="flex-1 text-center">
-              <FaUserDoctor className="w-10 h-10 inline-block text-teal-500" />
-              <h5 className="mt-4 text-xl font-bold text-gray-800">
+              <FaUserDoctor className="w-10 h-10 inline-block text-green-500" />
+              <h5 className="mt-4 text-xl font-bold text-green-700">
                 Healthcare Solutions
               </h5>
-              <p className="mt-2 text-sm text-gray-700">
+              <p className="mt-2 text-sm text-green-900">
                 AMENF delivers innovative healthcare solutions aimed at
                 strengthening medical capacity and improving patient outcomes
                 across sub-Saharan Africa.
@@ -97,13 +142,13 @@ const Home = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="p-8 border border-gray-200 bg-gray-200 shadow-xl rounded-tl-4xl rounded-br-4xl hover:bg-gray-300 cursor-pointer flex flex-col h-full">
+          <div className="p-8 border border-gray-200 bg-orange-50 shadow-xl rounded-tl-4xl rounded-br-4xl hover:bg-orange-100 cursor-pointer flex flex-col h-full">
             <div className="flex-1 text-center">
-              <FaAmbulance className="w-10 h-10 inline-block text-teal-500" />
-              <h5 className="mt-4 text-xl font-bold text-gray-800">
+              <FaAmbulance className="w-10 h-10 inline-block text-orange-500" />
+              <h5 className="mt-4 text-xl font-bold text-orange-700">
                 24/7 Availability
               </h5>
-              <p className="mt-2 text-sm text-gray-700">
+              <p className="mt-2 text-sm text-orange-900">
                 AMENF ensures 24/7 availability to support medical professionals
                 and communities with continuous access to resources and care.
               </p>
@@ -115,7 +160,7 @@ const Home = () => {
         <div className="bg-sky-100 rounded-tr-3xl rounded-br-full mx-4 md:mx-32 my-8 md:my-14 relative p-6">
           <div className="flex flex-col md:flex-row md:items-center md:space-x-5 space-y-4 md:space-y-0">
             {/* Left border line */}
-            <div className="hidden md:block h-32 border-2 border-sky-500"></div>
+            <div className="hidden md:block h-32 border-2 border-teal-500"></div>
 
             {/* Text content */}
             {/* <div className="flex-1">
@@ -128,7 +173,7 @@ const Home = () => {
             </div> */}
 
             <div className="flex-1">
-              <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-sky-500 to-teal-500 bg-clip-text text-transparent">
                 African Medical Education Network Foundation
               </div>
               <div className="mt-2 text-sm sm:text-base md:text-lg font-semibold text-gray-600">
@@ -141,7 +186,7 @@ const Home = () => {
 
             {/* Button */}
             <div className="flex justify-start md:justify-end">
-              <button className="border border-blue-500 text-sky-500 px-4 py-2 rounded-lg mr-20 hover:bg-sky-500 hover:text-white transition">
+              <button className="border border-teal-500 text-teal-500 px-4 py-2 rounded-lg mr-20 hover:bg-teal-500 hover:text-white transition">
                 Learn More..
               </button>
             </div>
@@ -154,26 +199,26 @@ const Home = () => {
             {/* 1st block */}
             <div className="w-full md:w-[33%] space-y-4">
               <h1 className="font-semibold text-lg sm:text-xl">
-                Todays Tip from Dr. Hanman
+                Todays Tip from Dr. Sakshi
               </h1>
               <img
-                src="tip-image.jpg"
+                src="doctor4.jpg"
                 alt="Error loading"
                 className="rounded-md w-full object-cover md:h-full"
               />
             </div>
 
             {/* 2nd block */}
-            <div className="w-full md:w-[36%] space-y-3">
+            <div className="w-full md:w-[65%] space-y-3">
               <h2 className="font-medium text-base sm:text-lg">
                 How to live a healthy lifestyle?
               </h2>
-              <p className="text-sm sm:text-base">
-                Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed
-                fringilla mauris sit amet nibh. Donec sodales sagittis magna.
-                Sed consequat, leo eget bibendum sodales, augue velit cursus
-                nunc, quis gravida magna mi a libero. Etiam sit amet orci eget
-                eros faucibus tincidunt. Duis leo.
+              <p className="text-sm sm:text-base text-justify">
+                Living a healthy lifestyle is not just about avoiding
+                illness—it’s about creating balance, energy, and overall
+                well-being in your daily life. At AMENF Hospital, we believe
+                that small, consistent choices can make a big difference in your
+                health.
               </p>
 
               {/* Tips List */}
@@ -201,177 +246,87 @@ const Home = () => {
               </div>
 
               {/* Highlight Note */}
-              <div className="bg-gray-100 p-3 rounded-md text-sm sm:text-base">
-                Donec sodales sagittis magna. Sed consequat, leo eget bibendum
-                sodales, augue velit cursus nunc, quis gravida magna mi a
-                libero. Etiam sit amet orci eget eros faucibus.
-              </div>
-            </div>
-
-            {/* 3rd block (Form) */}
-            <div className="w-full md:w-[30%]">
-              <div className="w-full bg-white shadow-lg rounded-md overflow-hidden md:pb-12 md:mt-2">
-                {/* Header */}
-                <div className="bg-teal-500 text-white p-4 flex items-center space-x-2">
-                  <span className="text-xl">👨‍⚕️</span>
-                  <h2 className="font-semibold text-base sm:text-lg md:text-xl">
-                    Book an Appointment
-                  </h2>
-                </div>
-
-                {/* Form */}
-                <form className="p-6 space-y-4">
-                  <select className="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
-                    <option>Select Department</option>
-                    <option>Cardiology</option>
-                    <option>Dermatology</option>
-                    <option>Neurology</option>
-                  </select>
-
-                  <input
-                    type="text"
-                    placeholder="Your First Name (required)"
-                    className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Your Last Name"
-                    className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
-                  />
-                  <input
-                    type="tel"
-                    placeholder="Your Phone (required)"
-                    className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
-                  />
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
-                  />
-                  <input
-                    type="date"
-                    className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
-                  />
-
-                  <button
-                    type="submit"
-                    className="bg-teal-500 text-white px-6 py-2 rounded hover:bg-teal-600 transition w-full sm:w-auto"
-                  >
-                    SUBMIT
-                  </button>
-                </form>
+              <div className="bg-gray-100 p-3 rounded-md text-sm sm:text-base text-justify">
+                A healthy lifestyle is not about perfection but about making
+                better choices every day. At AMENF Hospital, we are committed to
+                guiding you on your journey to long-term health and wellness.
               </div>
             </div>
           </div>
         </div>
 
-        {/* 4th container */}
-        <div className="mx-4 md:mx-16 lg:mx-32 my-8 md:my-14">
-          <h2 className="font-semibold text-2xl mb-6">
-            Top Trends – Health Talks
-          </h2>
-
-          {/* Responsive Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* 1st block */}
-            <div className="space-y-2">
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  1
-                </span>
-                <span>Breast Cancer Types</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  2
-                </span>
-                <span>Medicare Eligibility</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  3
-                </span>
-                <span>Medicaid Eligibility</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  4
-                </span>
-                <span>Yellow Fever</span>
-              </div>
+        {/* Doctors Section */}
+        {/* <section id="doctors" className="py-20 bg-secondary/30"> */}
+        <section id="doctors" className="mx-4 md:mx-16 lg:mx-32 my-8 md:my-14">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <Badge className="bg-primary/10 text-primary border-primary/20 rounded-full px-4 py-2 mb-4">
+                Our Team
+              </Badge>
+              <h2 className="text-4xl font-bold text-foreground mb-6">
+                Meet Our Expert Doctors
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+                Our team of highly qualified and experienced medical
+                professionals is dedicated to providing you with the best
+                possible care.
+              </p>
             </div>
 
-            {/* 2nd block */}
-            <div className="space-y-2">
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  5
-                </span>
-                <span>Gonorrhea</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  6
-                </span>
-                <span>Flu Vaccine</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  7
-                </span>
-                <span>Gluten-Free Diet</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  8
-                </span>
-                <span>HIV / AIDS</span>
-              </div>
-            </div>
-
-            {/* 3rd block */}
-            <div className="space-y-2">
-              <div className="space-x-2">
-                <span className="px-[8px] py-[2px] rounded-full text-white bg-gray-500">
-                  9
-                </span>
-                <span>Asthma in Cold Weather</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[6px] py-[4px] rounded-full text-white bg-gray-500">
-                  10
-                </span>
-                <span>Insurance Deadlines</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[6px] py-[4px] rounded-full text-white bg-gray-500">
-                  11
-                </span>
-                <span>Pumpkin Health Benefits</span>
-              </div>
-              <div className="space-x-2">
-                <span className="px-[6px] py-[4px] rounded-full text-white bg-gray-500">
-                  12
-                </span>
-                <span>Dietasical Syndrome</span>
-              </div>
-            </div>
-
-            {/* 4th block - Image */}
-            <div className="flex justify-start md:justify-center items-center">
-              <img
-                src="soulmedic-app.jpg"
-                alt="Error loading"
-                className="w-full max-w-[250px] rounded-lg shadow-md"
-              />
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {doctors.map((doctor, index) => (
+                <Card
+                  key={index}
+                  className="group hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 rounded-2xl border-0 bg-gradient-to-br from-card to-card/80 overflow-hidden"
+                >
+                  <div className="relative">
+                    <img
+                      src={doctor.image}
+                      alt={doctor.name}
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    {/* <div className="absolute top-4 right-4 bg-card/95 backdrop-blur-sm rounded-full px-3 py-1 flex items-center gap-1">
+                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      <span className="text-sm font-semibold">
+                        {doctor.rating}
+                      </span>
+                    </div> */}
+                  </div>
+                  <CardHeader className="p-5">
+                    <CardTitle className="text-xl font-bold text-foreground">
+                      {doctor.name}
+                    </CardTitle>
+                    <CardDescription className="text-primary font-semibold">
+                      {doctor.specialty}
+                    </CardDescription>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Award className="w-4 h-4" />
+                      {doctor.experience} Experience
+                    </div>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <GraduationCap className="w-4 h-4" />
+                      {doctor.qualifications}
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <button
+                      variant="outline"
+                      className="border border-teal-500 text-teal-500 px-4 py-2 rounded-lg hover:bg-teal-500 hover:text-white transition"
+                      onClick={handleButtonClick}
+                    >
+                      Read More...
+                    </button>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Card Section*/}
         <div className="space-y-6">
           <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Our Mission & Approach</h2>
+            <h2 className="text-4xl font-bold mb-4">Our Mission & Approach</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Addressing the healthcare crisis through innovative education and
               sustainable solutions
@@ -379,13 +334,15 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mx-6 md:mx-32 my-10 items-stretch">
             {/* Card 1 */}
-            <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            {/* <div className="max-w-sm mx-auto bg-blue-50 rounded-2xl shadow-md  hover:shadow-lg "> */}
+
+            <div className="group shadow-md hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 rounded-2xl bg-blue-50 hover:bg-blue-100 border-0 bg-gradient-to-br from-card to-card/80 overflow-hidden">
               <div className="p-4 text-center">
-                <ImAidKit className="w-10 h-10 mt-5 inline-block text-gray-300 hover:text-teal-500" />
-                <h3 className="text-lg font-semibold pt-5">
+                <ImAidKit className="w-10 h-10 mt-5 inline-block text-blue-600 hover:text-teal-500" />
+                <h3 className="text-lg  text-blue-600 font-semibold pt-5">
                   Innovative Curriculum
                 </h3>
-                <p className="text-gray-600 text-sm p-5">
+                <p className="text-blue-900 text-sm p-5">
                   Integrating primary care, telemedicine, AI diagnostics, and
                   community medicine
                 </p>
@@ -393,24 +350,26 @@ const Home = () => {
             </div>
             {/* <div className="p-8 border border-gray-200 bg-gray-200 shadow-xl rounded-tl-4xl rounded-br-4xl hover:bg-gray-300 cursor-pointer flex flex-col h-full"></div> */}
             {/* Card 2 */}
-            <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div className="max-w-sm mx-auto bg-green-50 rounded-2xl shadow-md overflow-hidden  hover:bg-green-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <div className="p-4 text-center">
-                <ImAidKit className="w-10 h-10 mt-5 inline-block text-gray-300 hover:text-teal-500" />
-                <h3 className="text-lg font-semibold pt-5">Global Impact</h3>
-                <p className="text-gray-600 text-sm p-5">
+                <ImAidKit className="w-10 h-10 mt-5 inline-block text-green-600 hover:text-teal-500" />
+                <h3 className="text-lg text-green-600 font-semibold pt-5">
+                  Global Impact
+                </h3>
+                <p className="text-green-900 text-sm p-5">
                   Training healthcare professionals across 45 countries in the
                   region and beyond
                 </p>
               </div>
             </div>
             {/* Card 3 */}
-            <div className="max-w-sm mx-auto bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div className="max-w-sm mx-auto bg-orange-50 rounded-2xl shadow-md overflow-hidden  hover:bg-orange-100 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300">
               <div className="p-4 text-center">
-                <ImAidKit className="w-10 h-10 mt-5 inline-block text-gray-300 hover:text-teal-500" />
-                <h3 className="text-lg font-semibold pt-5">
+                <ImAidKit className="w-10 h-10 mt-5 inline-block text-orange-600 hover:text-teal-500" />
+                <h3 className="text-lg  text-orange-600 font-semibold pt-5">
                   Sustainable Model
                 </h3>
-                <p className="text-gray-600 text-sm p-5">
+                <p className="text-orange-900 text-sm p-5">
                   Recipients serve underserved areas for minimum two years after
                   graduation
                 </p>
@@ -429,7 +388,7 @@ const Home = () => {
                 {faqs.map((faq, index) => (
                   <div
                     key={index}
-                    className="border border-gray-300 rounded-lg overflow-hidden"
+                    className="border border-gray-300 rounded-lg overflow-hidden text-justify"
                   >
                     <button
                       onClick={() =>
@@ -445,7 +404,7 @@ const Home = () => {
                       )}
                     </button>
                     {openIndex === index && (
-                      <div className="p-4 border-t-1 border-gray-300 text-gray-600 text-sm">
+                      <div className="p-4 border-t-1 border-gray-300 text-gray-600 text-sm whitespace-pre-line">
                         {faq.answer}
                       </div>
                     )}
@@ -456,25 +415,32 @@ const Home = () => {
 
             {/* Why Us Section */}
             <div>
-              <h2 className="text-2xl font-bold mb-4">Why Us?</h2>
+              <h2 className="text-2xl font-bold mb-4">Features</h2>
               <div className="space-y-6">
-                {whyUs.map((item, index) => (
-                  <div key={index} className="flex items-start space-x-4">
-                    <div className="bg-teal-500 p-4 rounded-full flex items-center justify-center">
-                      {item.icon}
+                {/* {features.map((item, index) => { */}
+                {features.slice(0, 6).map((features, index) => {
+                  const IconComponent = getIcon(features.icon);
+                  return (
+                    <div key={index} className="flex items-start space-x-4">
+                      <div className=" border-3 border-teal-600 bg-teal-400 hover:bg-teal-600  text-white  p-4 rounded-full flex items-center justify-center transition duration-300 ease-in-out hover:scale-110">
+                        {/* <span className="w-8 h-8 text-white">{item.icon} </span> */}
+                        <IconComponent className="w-8 h-8 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left group-hover:after:scale-x-100" />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold">
+                          {features.title}
+                        </h3>
+                        <p className="text-gray-600 text-sm">{features.desc}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-semibold">{item.title}</h3>
-                      <p className="text-gray-600 text-sm">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Services Preview */}
+        {/* Our Services Section */}
         <section className="bg-white mx-4 md:mx-16 lg:mx-32 text-center md:text-left my-20 ">
           <div className="container">
             <div className="text-center space-y-4 mb-16">
@@ -488,26 +454,30 @@ const Home = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.slice(0, 6).map((service, index) => (
-                <Card
-                  key={service.id}
-                  className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md"
-                >
-                  <CardHeader>
-                    <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                      <FaRegHeart className="w-6 h-6 text-white" />
-                    </div>
-                    <CardTitle className="text-xl text-gray-900">
-                      {service.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <CardDescription className="text-gray-600 leading-relaxed">
-                      {service.description}
-                    </CardDescription>
-                  </CardContent>
-                </Card>
-              ))}
+              {services.slice(0, 6).map((service, index) => {
+                const IconComponent = getIcon(service.icon);
+                return (
+                  <Card
+                    key={service.id}
+                    className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md"
+                  >
+                    <CardHeader>
+                      <div className="w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                        {/* <FaRegHeart className="w-6 h-6 text-white" /> */}
+                        <IconComponent className="w-8 h-8 text-white" />
+                      </div>
+                      <CardTitle className="text-xl text-gray-900">
+                        {service.title}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-gray-600 leading-relaxed">
+                        {service.description}
+                      </CardDescription>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -517,16 +487,9 @@ const Home = () => {
         <div className="pb-10 pt-6">
           {/* Heading Section */}
           <div className="mx-4 md:mx-16 lg:mx-32 text-center md:text-left">
-            <h1 className="font-semibold text-2xl md:text-3xl">
+            <h1 className="font-semibold text-2xl md:text-3xl pb-5">
               AMENF Hospitals – Where Excellence Meets Compassion
             </h1>
-            <p className="my-4 text-gray-700 text-sm md:text-base">
-              Established in 1983 by Dr. Prathap C Reddy, Apollo Hospitals has
-              set new benchmarks in medical excellence, innovation, and
-              patient-centric care. With India’s largest healthcare network and
-              advanced technology, we deliver world-class treatment and
-              exceptional outcomes.
-            </p>
           </div>
 
           {/* Cards Section */}
@@ -572,7 +535,66 @@ const Home = () => {
                 />
               </div>
             ))}
+
+            {/* <Carousel>
+              <img src="./client1.jpg" alt="..." />
+              <img src="./client2.jpg" alt="..." />
+              <img src="./client3.jpg" alt="..." />
+              <img src="./client4.jpg" alt="..." />
+            </Carousel> */}
           </div>
+
+          {/* Book An Appointment block (Form) */}
+          {/* <div className="w-full md:w-[30%]">
+            <div className="w-full bg-white shadow-lg rounded-md overflow-hidden md:pb-12 md:mt-2">
+              <div className="bg-teal-500 text-white p-4 flex items-center space-x-2">
+                <span className="text-xl">👨‍⚕️</span>
+                <h2 className="font-semibold text-base sm:text-lg md:text-xl">
+                  Book an Appointment
+                </h2>
+              </div>
+              <form className="p-6 space-y-4">
+                <select className="w-full border border-gray-300 rounded-md p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                  <option>Select Department</option>
+                  <option>Cardiology</option>
+                  <option>Dermatology</option>
+                  <option>Neurology</option>
+                </select>
+
+                <input
+                  type="text"
+                  placeholder="Your First Name (required)"
+                  className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
+                />
+                <input
+                  type="text"
+                  placeholder="Your Last Name"
+                  className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
+                />
+                <input
+                  type="tel"
+                  placeholder="Your Phone (required)"
+                  className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
+                />
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
+                />
+                <input
+                  type="date"
+                  className="w-full border border-gray-300 rounded-md p-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-teal-400"
+                />
+
+                <button
+                  type="submit"
+                  className="bg-teal-500 text-white px-6 py-2 rounded hover:bg-teal-600 transition w-full sm:w-auto"
+                >
+                  SUBMIT
+                </button>
+              </form>
+            </div>
+          </div> */}
         </div>
       </div>
     </>

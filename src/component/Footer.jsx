@@ -16,9 +16,9 @@ export const Footer = () => {
           {/* Logo + About */}
           <div>
             <div className="flex items-center space-x-2">
-              <div>
+              <div className="bg-white w-100 text-center rounded-sm">
                 <img
-                  src="Logo.jpg"
+                  src="Logo.png"
                   alt="elehealth logo"
                   className="h-12 w-auto"
                 />

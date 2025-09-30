@@ -42,6 +42,12 @@ const NavBar = () => {
               About Us
             </NavLink>
             <NavLink
+              to="/Doctors"
+              className="hover:text-teal-700 cursor-pointer"
+            >
+              Doctors
+            </NavLink>
+            <NavLink
               to="/Services"
               className="hover:text-teal-700 cursor-pointer"
             >
@@ -59,12 +65,13 @@ const NavBar = () => {
             >
               Contact Us
             </NavLink>
-            <NavLink
+
+            {/* <NavLink
               to="/login"
               className="hover:text-teal-700 cursor-pointer outline rounded-md p-2 outline-offset-1 outline-white"
             >
               Login
-            </NavLink>
+            </NavLink> */}
             {/*   <NavLink
               to="/signup"
               className="hover:text-blue-700 cursor-pointer outline rounded-md p-2 outline-offset-1 outline-white"
@@ -88,9 +95,9 @@ const NavBar = () => {
           transition={{ duration: 0.6, ease: "easeInOut" }} // adjust speed here
           className="bg-white shadow-md overflow-hidden"
         >
-          <div className="bg-blue-500 text-white px-10 md:hidden flex">
+          <div className="bg-gradient-to-tr from-teal-600 to-teal-200 text-white px-10 md:hidden flex">
             <ul className="space-x-4 text-white space-y-2 py-4 ">
-              <li className="hover:text-blue-700 text-xl cursor-pointer">
+              {/*  <li className="hover:text-blue-700 text-xl cursor-pointer">
                 Home
               </li>
               <li className="hover:text-blue-700 text-xl cursor-pointer">
@@ -98,6 +105,24 @@ const NavBar = () => {
               </li>
               <li className="hover:text-blue-700 text-xl cursor-pointer">
                 Contact
+              </li> */}
+              <li className="hover:text-teal-700 cursor-pointer">
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li className="hover:text-teal-700 cursor-pointer">
+                <NavLink to="/About">About Us</NavLink>
+              </li>
+              <li className="hover:text-teal-700 cursor-pointer">
+                <NavLink to="/Doctors">Doctors</NavLink>
+              </li>
+              <li className="hover:text-teal-700 cursor-pointer">
+                <NavLink to="/Services">Services</NavLink>
+              </li>
+              <li className="hover:text-teal-700 cursor-pointer">
+                <NavLink to="/Programs">Programs</NavLink>
+              </li>
+              <li className="hover:text-teal-700 cursor-pointer flex items-center justify-center">
+                <NavLink to="/Contact">Contact Us</NavLink>
               </li>
             </ul>
           </div>
