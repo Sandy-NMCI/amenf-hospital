@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "../component/ui/select";
 import { useToast } from "../hooks/use-toast";
+import contactbanner from "../assets/contact2.jpg";
 import {
   MapPin,
   Phone,
@@ -119,8 +120,12 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20 bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      {/* <div className="container mx-auto px-4 sm:px-6 lg:px-8"> */}
+      <div
+        className="pt-10 bg-cover bg-center h-100"
+        style={{ backgroundImage: `url(${contactbanner})` }}
+      >
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-100 text-lg px-4 py-2">
@@ -133,13 +138,14 @@ const Contact = () => {
               Us
             </span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-black max-w-3xl mx-auto leading-relaxed">
             Have questions about our programs or want to get involved? We'd love
             to hear from you. Reach out to us and let's work together to
-            transform healthcare in Africa.
+            transform healthcare in AMENF.
           </p>
         </div>
-
+      </div>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8  py-10">
         {/* Contact Information Cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {contactInfo.map((info, index) => (

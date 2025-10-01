@@ -8,6 +8,7 @@ import {
 } from "../component/ui/card";
 import { Badge } from "../component/ui/badge";
 import { Button } from "../component/ui/button";
+import servicesbanner from "../assets/services.jpg";
 import {
   GraduationCap,
   Award,
@@ -46,7 +47,10 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="pt-10 bg-[url('./services.jpg')] bg-cover bg-center h-100">
+      <div
+        className="pt-10 bg-cover bg-center h-100"
+        style={{ backgroundImage: `url(${servicesbanner})` }}
+      >
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-100 text-lg px-4 py-2">

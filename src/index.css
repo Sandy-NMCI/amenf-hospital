@@ -5,3 +5,13 @@
   bottom: 0;
   width: 100%;
 } */
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(
+      calc(-100% - var(--gap))
+    ); /* Adjust --gap based on your spacing */
+  }
+}

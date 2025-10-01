@@ -1,48 +1,74 @@
+import f1 from "../assets/f1.jpg";
+import f2 from "../assets/f2.jpg";
+import f3 from "../assets/hospital-services.jpg";
+import lab1 from "../assets/lab1.jpg";
+import lab2 from "../assets/lab2.jpg";
+import lab3 from "../assets/lab3.jpg";
+import lab4 from "../assets/lab4.jpg";
+import lab5 from "../assets/lab5.jpg";
+import lab6 from "../assets/lab6.jpg";
+import doctor1 from "../assets/doctor1.jpg";
+import doctor2 from "../assets/doctor2.jpg";
+import doctor3 from "../assets/doctor3.jpg";
+import doctor5 from "../assets/doctor5.jpg";
+import client1 from "../assets/client1.jpg";
+import client2 from "../assets/client2.jpg";
+import client3 from "../assets/client3.jpg";
+import client4 from "../assets/client4.jpg";
+import proDetail1 from "../assets/program-details4.jpg";
+import proDetail2 from "../assets/program-details2.jpg";
+import proDetail3 from "../assets/program-details3.jpg";
+import hospital from "../assets/hospital.png";
+import stethoscope from "../assets/stethoscope.png";
+import heart from "../assets/heart.png";
+import hospital2 from "../assets/hospital2.png";
+import location from "../assets/location.png";
+import medicine from "../assets/medicine.png";
 export const cardDetails = [
   {
     id: 1,
     title: "Title 1",
-    img: `./f1.jpg`,
+    img: f1,
   },
   {
     id: 2,
     title: "Title 2",
-    img: `./f2.jpg`,
+    img: f2,
   },
   {
     id: 3,
     title: "Title 3",
-    img: `./hospital-services.jpg`,
+    img: f3,
   },
   {
     id: 4,
     title: "Title 4",
-    img: `./lab1.jpg`,
+    img: lab1,
   },
   {
     id: 5,
     title: "Title 5",
-    img: `./lab2.jpg`,
+    img: lab2,
   },
   {
     id: 6,
     title: "Title 6",
-    img: `./lab3.jpg`,
+    img: lab3,
   },
   {
     id: 7,
     title: "Title 7",
-    img: `./lab4.jpg`,
+    img: lab4,
   },
   {
     id: 8,
     title: "Title 8",
-    img: `./lab5.jpg`,
+    img: lab5,
   },
   {
     id: 9,
     title: "Title 9",
-    img: `./lab6.jpg`,
+    img: lab6,
   },
 ];
 
@@ -50,22 +76,42 @@ export const partnersDetails = [
   {
     id: 1,
     title: "Title 1",
-    img: `./client1.jpg`,
+    img: client1,
   },
   {
     id: 2,
     title: "Title 2",
-    img: `./client2.jpg`,
+    img: client2,
   },
   {
     id: 3,
     title: "Title 3",
-    img: `./client3.jpg`,
+    img: client3,
   },
   {
     id: 4,
+    title: "Title 4",
+    img: client4,
+  },
+  {
+    id: 1,
+    title: "Title 1",
+    img: client1,
+  },
+  {
+    id: 2,
+    title: "Title 2",
+    img: client2,
+  },
+  {
+    id: 3,
     title: "Title 3",
-    img: `./client4.jpg`,
+    img: client3,
+  },
+  {
+    id: 4,
+    title: "Title 4",
+    img: client4,
   },
 ];
 export const clinicsDetails = [
@@ -73,42 +119,42 @@ export const clinicsDetails = [
     id: 1,
     title: "Top",
     title2: "Hospitals",
-    img: `./image (33).png`,
+    img: hospital,
     desc: "India’s Largest Private Hospital Network, Delivering Advanced Healthcare.",
   },
   {
     id: 2,
     title: "13000+",
     title2: "Doctors",
-    img: `./image (34).png`,
+    img: stethoscope,
     desc: "Leading Medical Experts Providing Exceptional Care Across India.",
   },
   {
     id: 3,
     title: "2,300+",
     title2: "Diagnostic centers",
-    img: `./image (35).png`,
+    img: heart,
     desc: "Precision Diagnostics Accessible Across India.",
   },
   {
     id: 4,
     title: "700+",
     title2: "Clinics",
-    img: `./image (36).png`,
+    img: hospital2,
     desc: "Largest Clinic Network in India, Bringing Quality Care Closer to You.",
   },
   {
     id: 4,
     title: "10,000+",
     title2: "Pincodes",
-    img: `./image (37).png`,
+    img: location,
     desc: "Expanding Healthcare Services Across India’s Pin Codes.",
   },
   {
     id: 4,
     title: "68,00+",
     title2: "Pharmacies",
-    img: `./image (38).png`,
+    img: medicine,
     desc: "Ensuring Seamless Access to Medicines Across the Nation.",
   },
 ];
@@ -152,7 +198,7 @@ export const mockData = {
       id: 1,
       title: "Tuition-Free Medical Education",
       description:
-        "Comprehensive medical education program with innovative curriculum integrating primary care, community medicine, telemedicine, and AI diagnostics.",
+        "Comprehensive medical education program with innovative curriculum integrating primary care, telemedicine, and AI diagnostics.",
       icon: "GraduationCap",
     },
     {
@@ -272,8 +318,7 @@ export const doctors = [
     name: "Dr. Sarah",
     specialty: "Chief of Cardiology",
     experience: "15+ years",
-    image:
-      "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&h=400&fit=crop&crop=face",
+    image: doctor1,
     rating: 4.9,
     qualifications: "MD, FACC, Board Certified",
     email: "sarah@amenf.com",
@@ -282,8 +327,7 @@ export const doctors = [
     name: "Dr. Naresh",
     specialty: "Emergency Medicine",
     experience: "12+ years",
-    image:
-      "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&h=400&fit=crop&crop=face",
+    image: doctor2,
     rating: 4.8,
     qualifications: "MD, PhD, Board Certified",
     email: "naresh@amenf.com",
@@ -292,7 +336,7 @@ export const doctors = [
     name: "Dr. Anandi Gopal",
     specialty: "Neurologist",
     experience: "10+ years",
-    image: "/n-doctor.jpg",
+    image: doctor3,
     rating: 4.9,
     qualifications: "MD, PhD, Board Certified",
     email: "anandi@amenf.com",
@@ -301,7 +345,7 @@ export const doctors = [
     name: "Dr. Natalie",
     specialty: "General Surgery",
     experience: "10+ years",
-    image: `./w-doctor.jpg`,
+    image: doctor5,
     rating: 4.9,
     qualifications: "MD, PhD, Board Certified",
     email: "natalie@amenf.com",
@@ -355,7 +399,7 @@ export const programsData = [
       "Community medicine focus",
       "Clinical training in Mauritius and beyond",
     ],
-    image: `./program-details4.jpg`,
+    image: proDetail1,
   },
   {
     id: 2,
@@ -372,7 +416,7 @@ export const programsData = [
       "Health apps development",
       "Data analytics utilization",
     ],
-    image: `./program-details2.jpg`,
+    image: proDetail2,
   },
   {
     id: 3,
@@ -389,7 +433,7 @@ export const programsData = [
       "Public health emphasis",
       "Preventive care methods",
     ],
-    image: `./program-details3.jpg`,
+    image: proDetail3,
   },
 ];
 export const requirements = [

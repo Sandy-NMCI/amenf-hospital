@@ -29,7 +29,7 @@ const NavBar = () => {
             <input
               className="text-white outline-none w-3xs"
               type="text"
-              defaultValue="Search for anything"
+              defaultValue="Search for ....."
             />
           </span>
         </div>

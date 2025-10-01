@@ -1,3 +1,4 @@
+import { useState } from "react";
 import React from "react";
 import {
   Card,
@@ -25,6 +26,10 @@ import {
   Stethoscope,
 } from "lucide-react";
 import { programsData } from "../data/data";
+import probanner from "../assets/img3.jpg";
+import img1 from "../assets/program-details4.jpg";
+import img2 from "../assets/program-details2.jpg";
+import img3 from "../assets/program-details3.jpg";
 const ProgramDetails = () => {
   const getIcon = (index) => {
     const icons = [GraduationCap, Heart, Stethoscope];
@@ -32,9 +37,16 @@ const ProgramDetails = () => {
     return <Icon className="w-12 h-12" />;
   };
 
+  /*   const programImages = [img1, img2, img3];
+  const [currentIndex, setCurrentIndex] = useState(0); */
+
   return (
     <div className="min-h-screen  bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="pt-10 bg-[url('./img3.jpg')] bg-cover bg-center h-100">
+      {/* <div className="pt-10 bg-[url('./img3.jpg')] bg-cover bg-center h-100"> */}
+      <div
+        className="pt-10 bg-cover bg-center h-100"
+        style={{ backgroundImage: `url(${probanner})` }}
+      >
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-100 text-lg px-4 py-2">
             <Award className="w-4 h-4 mr-2" />
@@ -213,6 +225,7 @@ const ProgramDetails = () => {
                       </div>
                       <div className="pt-7">
                         <img
+                          // src={program[currentIndex]}
                           src={program.image}
                           alt={program.title}
                           className="rounded-b-lg"

@@ -9,6 +9,8 @@ import {
 import { Badge } from "../component/ui/badge";
 import { Button } from "../component/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../component/ui/tabs";
+import doctorbanner from "../assets/img2.jpg";
+
 import {
   GraduationCap,
   Award,
@@ -33,7 +35,11 @@ import { doctorsDetails, doctors } from "../data/data";
 const Doctors = () => {
   return (
     <div className="min-h-screen  bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="pt-10 bg-[url('./img2.jpg')] bg-cover bg-center h-100">
+      {/* <div className="pt-10 bg-[url('./img2.jpg')] bg-cover bg-center h-100"> */}
+      <div
+        className="pt-10 bg-cover bg-center h-100"
+        style={{ backgroundImage: `url(${doctorbanner})` }}
+      >
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-100 text-lg px-4 py-2">

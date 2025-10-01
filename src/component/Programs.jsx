@@ -26,6 +26,7 @@ import {
 import { mockData, programsData, requirements } from "../data/data";
 import { useNavigate } from "react-router-dom";
 import { Carousel } from "flowbite-react";
+import programbanner from "../assets/img2.jpg";
 
 const Programs = () => {
   const navigate = useNavigate();
@@ -76,7 +77,10 @@ const Programs = () => {
 
   return (
     <div className="min-h-screen  bg-gradient-to-br from-slate-50 to-blue-50">
-      <div className="pt-10 bg-[url('./img2.jpg')] bg-cover bg-center h-100">
+      <div
+        className="pt-10 bg-cover bg-center h-100"
+        style={{ backgroundImage: `url(${programbanner})` }}
+      >
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-100 text-lg px-4 py-2">

@@ -20,7 +20,9 @@ import { Badge } from "../component/ui/badge";
 import { Carousel } from "flowbite-react";
 import { Icon } from "lucide-react";
 import { coconut } from "@lucide/lab";
-import doc4 from "../assets/doctor4.jpg";
+import doctor4 from "../assets/doctor4.jpg";
+import Marquee from "react-fast-marquee";
+
 const handleInputChange = (e) => {
   const { name, value } = e.target;
   setFormData((prev) => ({
@@ -52,6 +54,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "../component/ui/card";
@@ -108,7 +111,9 @@ const Home = () => {
   const handleButtonClick = () => {
     window.location.href = "/Doctors"; // Direct browser redirection
   };
-
+  const servicesButtonClick = () => {
+    window.location.href = "/Services"; // Direct browser redirection
+  };
   return (
     <>
       <Banner />
@@ -206,7 +211,7 @@ const Home = () => {
                 Todays Tip from Dr. Sakshi
               </h1>
               <img
-                src={doc4}
+                src={doctor4}
                 alt="Error loading"
                 className="rounded-md w-full object-cover md:h-full"
               />
@@ -458,7 +463,7 @@ const Home = () => {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.slice(0, 6).map((service, index) => {
+              {services.slice(0, 3).map((service, index) => {
                 const IconComponent = getIcon(service.icon);
                 return (
                   <Card
@@ -475,10 +480,19 @@ const Home = () => {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <CardDescription className="text-gray-600 leading-relaxed">
+                      <CardDescription className="text-gray-600 leading-relaxed text-justify">
                         {service.description}
                       </CardDescription>
                     </CardContent>
+                    <CardFooter>
+                      <button
+                        variant="outline"
+                        className="border border-teal-500 text-teal-500 px-4 py-2 rounded-lg hover:bg-teal-500 hover:text-white transition"
+                        onClick={servicesButtonClick}
+                      >
+                        Read More...
+                      </button>
+                    </CardFooter>
                   </Card>
                 );
               })}
@@ -529,24 +543,20 @@ const Home = () => {
           <h2 className="font-semibold text-2xl mb-6">Our Partners</h2>
 
           {/* Responsive Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {partnersDetails.map((data, index) => (
-              <div key={index} className="flex justify-center items-center">
-                <img
-                  src={data.img}
-                  alt={`Partner ${index + 1}`}
-                  className="max-h-16 object-contain"
-                />
-              </div>
-            ))}
 
-            {/* <Carousel>
-              <img src="./client1.jpg" alt="..." />
-              <img src="./client2.jpg" alt="..." />
-              <img src="./client3.jpg" alt="..." />
-              <img src="./client4.jpg" alt="..." />
-            </Carousel> */}
-          </div>
+          <Marquee gradient={false} speed={60} pauseOnHover>
+            <div className="flex items-center">
+              {partnersDetails.map((data, index) => (
+                <div key={index}>
+                  <img
+                    src={data.img}
+                    alt={`Partner ${index + 1}`}
+                    className="max-h-16 object-contain"
+                  />
+                </div>
+              ))}
+            </div>
+          </Marquee>
 
           {/* Book An Appointment block (Form) */}
           {/* <div className="w-full md:w-[30%]">
@@ -599,6 +609,16 @@ const Home = () => {
               </form>
             </div>
           </div> */}
+          {/*  <Marquee duration="15s" gap="2rem">
+            <div className="flex items-center space-x-8">
+              <span className="text-lg font-medium text-blue-600">Item 1</span>
+              <span className="text-lg font-medium text-green-600">Item 2</span>
+              <span className="text-lg font-medium text-red-600">Item 3</span>
+              <span className="text-lg font-medium text-purple-600">
+                Item 4
+              </span>
+            </div>
+          </Marquee> */}
         </div>
       </div>
     </>

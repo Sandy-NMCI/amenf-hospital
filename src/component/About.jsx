@@ -8,6 +8,12 @@ import {
 } from "../component/ui/card";
 import { Badge } from "../component/ui/badge";
 import { Separator } from "../component/ui/separator";
+import aboutbanner from "../assets/img1.jpg";
+import healthcare3 from "../assets/healthcare3.jpg";
+import heathcare from "../assets/heathcare-form.jpg";
+import Mauritius from "../assets/why-Mauritius.jpg";
+import healthcare from "../assets/healthcare-stethoscope.jpg";
+
 import {
   MapPin,
   Users,
@@ -59,7 +65,11 @@ const About = () => {
   return (
     <div>
       {/* Header Section */}
-      <div className="pt-10 bg-[url('./img1.jpg')] bg-cover bg-center h-100">
+      {/* <div className="pt-10 bg-[url('./img1.jpg')] bg-cover bg-center h-100"> */}
+      <div
+        className="pt-10 bg-cover bg-center h-100"
+        style={{ backgroundImage: `url(${aboutbanner})` }}
+      >
         <div className="text-center space-y-6 mb-16">
           <Badge className="bg-teal-100 text-teal-800 hover:bg-teal-100 text-lg px-4 py-2">
             <Heart className="w-4 h-4 mr-2" />
@@ -120,10 +130,7 @@ const About = () => {
                     </p>
                   </div>
                   <div className="md:col-span-2 p-4">
-                    <img
-                      src="./healthcare3.jpg"
-                      className="lg:h-60 md:h-full"
-                    ></img>
+                    <img src={healthcare3} className="lg:h-60 md:h-full"></img>
                   </div>
                 </div>
               </CardContent>
@@ -153,10 +160,7 @@ const About = () => {
                 <p className="text-gray-700 leading-relaxed text-lg text-justify pb-5">
                   {aboutContent.solution}
                 </p>
-                <img
-                  src="./healthcare-stethoscope.jpg"
-                  className="md:w-full"
-                ></img>
+                <img src={healthcare} className="md:w-full"></img>
               </CardContent>
             </Card>
           </div>
@@ -186,7 +190,7 @@ const About = () => {
                 <p className="text-gray-700 leading-relaxed text-lg mb-4 text-justify">
                   {aboutContent.mauritiusAdvantage}
                 </p>
-                <img src="./why-Mauritius.jpg" className="md:w-full"></img>
+                <img src={Mauritius} className="md:w-full"></img>
                 <p className="text-gray-700 leading-relaxed text-lg text-justify">
                   Additionally, Mauritius has 35.5 nurses per 10,000 people,
                   well above the sub-Saharan benchmark of less than 20. With
@@ -258,7 +262,7 @@ const About = () => {
 
         <Separator className="my-16" />
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
           <div className="space-y-4">
             <h3 className="text-2xl font-semibold text-gray-900">
               Why This Matters
@@ -356,7 +360,7 @@ const About = () => {
               </div>
             </div>
             <div>
-              <img src="./heathcare-form.jpg" className="md:w-full"></img>
+              <img src={heathcare} className="md:w-full"></img>
             </div>
           </div>
         </div>

@@ -34,6 +34,7 @@ const Banner = () => {
           <SwiperSlide key={i}>
             <div>
               <img
+                // src={data.img}
                 src={data.img}
                 alt=""
                 className="w-full  h-auto lg:h-[550px]"
