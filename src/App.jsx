@@ -15,7 +15,7 @@ import SignUp from "./component/SignUp";
 function App() {
   return (
     <div>
-      <BrowserRouter>
+      <BrowserRouter basename="/amenf-hospital/">
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
